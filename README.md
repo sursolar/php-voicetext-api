@@ -25,7 +25,7 @@ Add below in `require` property on `composer.json`.
 
     {
         "require": {
-            "tetsuwo/voicetext-api": "dev-master"
+            "sursolar/voicetext-api": "dev-master"
         }
     }
 
