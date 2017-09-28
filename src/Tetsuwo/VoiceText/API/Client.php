@@ -7,12 +7,14 @@ class Client
 {
     private $apiKey;
     private $apiPassword;
+    private $proxy;
 
-    public function __construct($apiKey, $apiPassword = '')
+    public function __construct($apiKey, $apiPassword = '', $proxy = [])
     {
         $this->requestHandler = new RequestHandler();
         $this->setApiKey($apiKey);
         $this->setApiPassword($apiPassword);
+        $this->setProxy($proxy);
     }
 
     public function setApiKey($apiKey)
@@ -25,6 +27,12 @@ class Client
     {
         $this->apiPassword = $apiPassword;
         $this->requestHandler->setApiPassword($apiPassword);
+    }
+
+    public function setProxy($proxy)
+    {
+        $this->proxy = $proxy;
+        $this->requestHandler->setProxy($proxy);
     }
 
     public function getTts($options = null)
