@@ -9,6 +9,7 @@ class RequestHandler
 
     private $apiKey;
     private $apiPassword;
+    private $proxy;
 
     public function __construct()
     {
@@ -22,6 +23,11 @@ class RequestHandler
     public function setApiPassword($apiPassword)
     {
         $this->apiPassword = $apiPassword;
+    }
+
+    public function setProxy($proxy)
+    {
+        $this->proxy = $proxy;
     }
 
     public function request($method, $path, $options)
@@ -44,6 +50,10 @@ class RequestHandler
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
             curl_setopt($ch, CURLOPT_USERPWD, $auth_string);
             curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_1);
+            if ($this->proxy)
+            {
+                curl_setopt($ch, CURLOPT_PROXY, $this->proxy);
+            }
 
             if ($method === 'POST')
             {
