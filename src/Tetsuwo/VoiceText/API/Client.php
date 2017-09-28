@@ -9,7 +9,7 @@ class Client
     private $apiPassword;
     private $proxy;
 
-    public function __construct($apiKey, $apiPassword = '', $proxy = [])
+    public function __construct($apiKey, $apiPassword = '', $proxy = false)
     {
         $this->requestHandler = new RequestHandler();
         $this->setApiKey($apiKey);
